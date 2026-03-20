@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamTime — Sleep Cycle Calculator</title>
+  <meta name="description" content="Find the perfect bedtime or wake-up time based on natural 90-minute sleep cycles. Wake up refreshed, not groggy.">
+  <meta property="og:title" content="DreamTime — Sleep Cycle Calculator">
+  <meta property="og:description" content="Calculate ideal bedtimes and wake-up times using natural sleep cycles.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="stars stars--layer2" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <header class="brand" role="banner">
+      <div class="brand__logo" aria-hidden="true">
+        <!-- Crescent moon SVG -->
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M27.5 18.5C26.1 21.3 23.8 23.6 20.9 24.9C14.4 27.9 6.7 25 3.7 18.5C0.7 12 3.6 4.3 10.1 1.3C11.1 0.8 12.1 0.5 13.1 0.3C8.5 4.1 7.1 10.7 10.1 16C13.1 21.3 19.5 23.5 25.2 21.5C26.1 20.6 26.9 19.6 27.5 18.5Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <span class="brand__name">DreamTime</span>
+    </header>
+
+    <main id="app" role="main">
+      <!-- STATE A: Input View -->
+      <section id="input-view" class="view view--active" aria-label="Sleep calculator input">
+        <h1 class="heading">What time do you want to wake up?</h1>
+
+        <div class="time-picker" role="group" aria-label="Wake-up time selector">
+          <input
+            type="time"
+            id="wake-time"
+            class="time-input"
+            value="07:00"
+            aria-label="Wake-up time"
+          >
+        </div>
+
+        <button id="btn-calculate" class="btn btn--primary" type="button">
+          Calculate bedtimes
+        </button>
+
+        <div class="divider-row">
+          <span class="divider-line" aria-hidden="true"></span>
+          <span class="divider-text">or</span>
+          <span class="divider-line" aria-hidden="true"></span>
+        </div>
+
+        <p class="secondary-prompt">Going to bed right now?</p>
+        <button id="btn-sleep-now" class="btn btn--secondary" type="button">
+          Find wake-up times
+        </button>
+      </section>
+
+      <!-- STATE B: Bedtime Results -->
+      <section id="bedtime-results" class="view" aria-label="Calculated bedtime results" aria-live="polite">
+        <h2 class="heading heading--results">Best bedtimes</h2>
+        <p class="results-intro">
+          To wake up refreshed at <strong id="target-wake-time"></strong>, try going to sleep at one of these times.
+        </p>
+        <p class="results-note results-note--top">
+          This assumes it takes about <strong>15 minutes</strong> to fall asleep.
+        </p>
+        <ul id="bedtime-list" class="result-cards" role="list" aria-label="Calculated bedtimes"></ul>
+        <p class="results-note">
+          Waking at the end of a complete 90-minute sleep cycle helps reduce grogginess. Aim for <strong>5 or 6 full cycles</strong> for the best rest.
+        </p>
+        <button id="btn-back-bedtime" class="btn btn--ghost" type="button">
+          ← Pick a different time
+        </button>
+      </section>
+
+      <!-- STATE C: Wake-up Results -->
+      <section id="wakeup-results" class="view" aria-label="Calculated wake-up results" aria-live="polite">
+        <h2 class="heading heading--results">Best wake-up times</h2>
+        <p class="results-intro">
+          If you head to sleep right now, try to wake up at one of these times.
+        </p>
+        <p class="results-note results-note--top">
+          This includes about <strong>15 minutes</strong> to fall asleep.
+        </p>
+        <ul id="wakeup-list" class="result-cards" role="list" aria-label="Calculated wake-up times"></ul>
+        <p class="results-note">
+          Each time corresponds to the end of a complete 90-minute sleep cycle. <strong>5 or 6 cycles</strong> give you the most restorative sleep.
+        </p>
+        <button id="btn-back-wakeup" class="btn btn--ghost" type="button">
+          ← Start over
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p class="footer__copy">&copy; 2026 DreamTime</p>
+      <p class="footer__links">
+        <a href="#" class="footer__link">Privacy</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#" class="footer__link">Terms</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
